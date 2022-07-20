@@ -1,9 +1,7 @@
 {
-  "name": "kaholo-plugin-template",
-  "description": "A template for Kaholo plugin development",
+  "name": "kaholo-plugin-xray",
   "main": "app.js",
   "scripts": {
-    "test": "npx jest .",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix"
   },
