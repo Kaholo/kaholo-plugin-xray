@@ -1,8 +1,8 @@
 {
   "name": "xray",
   "viewName": "Xray",
-  "description": "Kaholo Plugin for Xray Test Management App for Jira",
-  "version": "0.1.0",
+  "description": "Kaholo Plugin for Xray Test Management App for Jira.",
+  "version": "1.0.0",
   "type": "executer",
   "execProgram": "node",
   "main": "app.js",
