@@ -1,7 +1,7 @@
 {
   "name": "xray",
   "viewName": "Xray",
-  "description": "Kaholo Plugin for Xray Test Management App for Jira.",
+  "description": "Kaholo Plugin for Xray Test Management App for Jira",
   "version": "0.1.0",
   "type": "executer",
   "execProgram": "node",
@@ -15,7 +15,7 @@
       {
         "name": "clientId",
         "viewName": "Xray Client ID",
-        "description": "API Key Client ID for authentication to Xray.",
+        "description": "API Key Client ID for authentication to Xray",
         "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Global+Settings%3A+API+Keys",
         "type": "vault",
         "required": true
@@ -23,7 +23,7 @@
       {
         "name": "clientSecret",
         "viewName": "Xray Client Secret",
-        "description": "API Key Client Secret for authentication to Xray.",
+        "description": "API Key Client Secret for authentication to Xray",
         "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Global+Settings%3A+API+Keys",
         "type": "vault",
         "required": true
@@ -38,7 +38,7 @@
         {
           "name": "executionResultsDocument",
           "viewName": "Xray Execution Results",
-          "description": "A document in Xray JSON Format containing the test results to import.",
+          "description": "A document in Xray JSON Format containing the test results to import",
           "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
           "type": "text",
           "parserType": "object",
