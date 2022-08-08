@@ -30,6 +30,45 @@ class XrayClient {
     return { token };
   }
 
+  async importXrayJsonExecutionResults(results) {
+    return this.makeAuthorizedApiCall({
+      path: "/api/v2/import/execution",
+      method: "POST",
+      data: results,
+    });
+  }
+
+  async importCucumberJsonExecutionResults(results) {
+    return this.makeAuthorizedApiCall({
+      path: "/api/v2/import/execution/cucumber",
+      method: "POST",
+      data: results,
+    });
+  }
+
+  async importJunitXmlExecutionResults(params) {
+    const {
+      xml,
+      pathParameters,
+    } = params;
+
+    const urlSearchParams = new URLSearchParams();
+    Object.entries(pathParameters).forEach(([key, value]) => {
+      if (value) {
+        urlSearchParams.append(key, value);
+      }
+    });
+
+    const junitXmlEndpoint = "/api/v2/import/execution/junit";
+    const path = `${junitXmlEndpoint}?${urlSearchParams.toString}`;
+
+    return this.makeAuthorizedApiCall({
+      path,
+      method: "POST",
+      data: xml,
+    });
+  }
+
   async makeAuthorizedApiCall(options) {
     this.checkAuth();
 
@@ -43,14 +82,19 @@ class XrayClient {
       Authorization: `Bearer ${this.token}`,
     };
 
-    const { data: xrayResponseData } = await axios({
-      method,
-      url,
-      headers,
-      data,
-    });
-
-    return xrayResponseData;
+    try {
+      const { data: xrayResponseData } = await axios({
+        method,
+        url,
+        headers,
+        data,
+      });
+      return xrayResponseData;
+    } catch (axiosError) {
+      const errorInfo = axiosError.response.data?.info;
+      const errorsDetails = axiosError.response.data?.errors?.join(", ");
+      throw new Error(`API error: ${errorInfo}, errors: ${errorsDetails}`);
+    }
   }
 
   checkAuth() {
