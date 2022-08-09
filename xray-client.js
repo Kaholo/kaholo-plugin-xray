@@ -35,6 +35,9 @@ class XrayClient {
       path: "/api/v2/import/execution",
       method: "POST",
       data: results,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 
@@ -43,6 +46,9 @@ class XrayClient {
       path: "/api/v2/import/execution/cucumber",
       method: "POST",
       data: results,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 
@@ -66,6 +72,9 @@ class XrayClient {
       path,
       method: "POST",
       data: xml,
+      headers: {
+        "Content-Type": "text/xml",
+      },
     });
   }
 
@@ -76,10 +85,12 @@ class XrayClient {
       path,
       data,
       method,
+      headers: additionalHeaders,
     } = options;
     const url = XrayClient.createApiUrl(path);
     const headers = {
       Authorization: `Bearer ${this.token}`,
+      ...additionalHeaders,
     };
 
     try {
