@@ -33,15 +33,84 @@
   "methods": [
     {
       "name": "importExecutionResults",
-      "viewName": "Import Execution Results",
+      "viewName": "Import Xray JSON Execution Results",
       "params": [
         {
           "name": "executionResultsDocument",
-          "viewName": "Xray Execution Results",
-          "description": "A document in Xray JSON Format containing the test results to import",
+          "viewName": "Execution Results Document",
+          "description": "A JSON document containing the test results to import",
           "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
           "type": "text",
           "parserType": "object",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "importCucumberJsonExecutionResults",
+      "viewName": "Import Cucumber JSON Execution Results",
+      "params": [
+        {
+          "name": "executionResultsDocument",
+          "viewName": "Execution Results Document",
+          "description": "A JSON document containing the test results to import",
+          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
+          "type": "text",
+          "parserType": "object",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "importJunitXmlExecutionResults",
+      "viewName": "Import Junit XML Execution Results",
+      "params": [
+        {
+          "name": "projectKey",
+          "viewName": "Project Key",
+          "description": "Key of the project where the test execution (if the Test Execution Key parameter wasn't provided) and the tests (if they aren't created yet) are going to be created",
+          "type": "string",
+          "placeholder": "XTP"
+        },
+        {
+          "name": "testExecKey",
+          "viewName": "Test Execution Key",
+          "type": "string",
+          "placeholder": "XNP-23"
+        },
+        {
+          "name": "testPlanKey",
+          "viewName": "Test Plan Key",
+          "description": "Key of the Test Plan. If you specify the Test Plan, the Tests will be added automatically to the Test Plan if they're not part of it",
+          "type": "string",
+          "placeholder": "XTP-12"
+        },
+        {
+          "name": "testEnvironments",
+          "viewName": "Test Environments",
+          "description": "A string containing a list of test environments separated by \";\"",
+          "type": "string",
+          "placeholder": "linux,docker"
+        },
+        {
+          "name": "revision",
+          "viewName": "Revision",
+          "description": "Source code and documentation version used in the test execution",
+          "type": "string",
+          "placeholder": "v2.1.0"
+        },
+        {
+          "name": "fixVersion",
+          "viewName": "Fix Version",
+          "description": "The Fix Version associated with the test execution (it supports only one value)",
+          "type": "string"
+        },
+        {
+          "name": "executionResultsDocument",
+          "viewName": "Execution Results Document",
+          "description": "An XML document containing the test results to import",
+          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
+          "type": "text",
           "required": true
         }
       ]

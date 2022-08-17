@@ -1,21 +1,45 @@
 const { bootstrap } = require("@kaholo/plugin-library");
-const XrayClient = require("./xray-client");
 
-async function importExecutionResults({
-  clientId,
-  clientSecret,
-  executionResultsDocument,
-}) {
-  const xrayClient = new XrayClient();
-  await xrayClient.authenticate({ clientId, clientSecret });
+const { injectXrayClient } = require("./helpers");
 
-  return xrayClient.makeAuthorizedApiCall({
-    path: "/api/v2/import/execution",
-    method: "POST",
-    data: executionResultsDocument,
+async function importXrayJsonExecutionResults(xrayClient, params) {
+  const { executionResultsDocument } = params;
+
+  return xrayClient.importXrayJsonExecutionResults(executionResultsDocument);
+}
+
+async function importCucumberJsonExecutionResults(xrayClient, params) {
+  const { executionResultsDocument } = params;
+
+  return xrayClient.importCucumberJsonExecutionResults(executionResultsDocument);
+}
+
+async function importJunitXmlExecutionResults(xrayClient, params) {
+  const {
+    executionResultsDocument,
+    projectKey,
+    testExecKey,
+    testPlanKey,
+    testEnvironments,
+    revision,
+    fixVersion,
+  } = params;
+
+  return xrayClient.importJunitXmlExecutionResults({
+    xml: executionResultsDocument,
+    pathParameters: {
+      projectKey,
+      testExecKey,
+      testPlanKey,
+      testEnvironments,
+      revision,
+      fixVersion,
+    },
   });
 }
 
 module.exports = bootstrap({
-  importExecutionResults,
+  importExecutionResults: injectXrayClient(importXrayJsonExecutionResults),
+  importCucumberJsonExecutionResults: injectXrayClient(importCucumberJsonExecutionResults),
+  importJunitXmlExecutionResults: injectXrayClient(importJunitXmlExecutionResults),
 });
