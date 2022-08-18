@@ -182,20 +182,20 @@
           "type": "options",
           "options": [
             {
-              "id": "passed",
-              "name": "PASSED"
+              "id": "PASSED",
+              "name": "Passed"
             },
             {
-              "id": "failed",
-              "name": "FAILED"
+              "id": "FAILED",
+              "name": "Failed"
             },
             {
-              "id": "toDo",
-              "name": "TO DO"
+              "id": "TODO",
+              "name": "To Do"
             },
             {
-              "id": "executing",
-              "name": "EXECUTING"
+              "id": "EXECUTING",
+              "name": "Executing"
             }
           ],
           "required": true,
