@@ -54,3 +54,14 @@ Xray does include APIs for importing types of test result other than the XRay JS
 
 A JSON file may be pasted into the parameter to test the Xray plugin, but when using the plugin to send the results of automated tests, the JSON document is more likely going to be provided by an earlier Action in the Pipeline (the automated test), and will be passed as a object in the code layer. For example, if the JSON is in a file named testresult.json, use the Command Line plugin to execute `cat testresult.json`. This will leave the JSON in variable `kaholo.actions.commandline1.result` where `commandline1` matches the ID of the Action executing the command. Next, toggle the code switch for parameter `Xray Execution Results`, and there put `kaholo.actions.commandline1.result`. Now whatever testresult.json the automated test writes, it'll be what gets imported into Xray in your pipeline.
 
+## Method: Create Execution Result
+This method creates an execution result in the form of an Xray JSON Document from the following parameters:
+* **Jira Project ID** - The project ID of the Jira project containing the Xray Test issue
+* **Execution Result Summary** - A text summary of the test result
+* **Execution Result Description** - A text description of the test result
+* **Test Environments** - A list of test enviornments as configured in Xray, one per line
+* **Execution Timestamp** - A time in ISO format representing both start and finish time of the test
+* **Jira User** - The name of the Jira user associated with this test result
+* **Test Result Comment** - Text commentary regarding the test result
+* **Test Result Status** - The status of the test execution being created
+* **Associated Test** - The Jira item number of the Test to which the Test Execution is related
