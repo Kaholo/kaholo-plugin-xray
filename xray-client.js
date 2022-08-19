@@ -106,9 +106,22 @@ class XrayClient {
       });
       return xrayResponseData;
     } catch (axiosError) {
-      const errorInfo = axiosError.response.data?.info;
+      let errorMessage = "";
+
+      const errorInfo = axiosError.response.data?.info || axiosError.response.data?.error;
+      if (errorInfo) {
+        errorMessage += `API error: ${errorInfo}`;
+      }
       const errorsDetails = axiosError.response.data?.errors?.join(", ");
-      throw new Error(`API error: ${errorInfo}, errors: ${errorsDetails}`);
+      if (errorsDetails) {
+        errorMessage += `, errors: ${errorsDetails}`;
+      }
+
+      if (errorMessage) {
+        throw new Error(errorMessage);
+      } else {
+        throw axiosError;
+      }
     }
   }
 

@@ -38,8 +38,46 @@ async function importJunitXmlExecutionResults(xrayClient, params) {
   });
 }
 
+function createExecutionResult(xrayClient, params) {
+  const {
+    infoProject,
+    infoSummary,
+    infoDescription,
+    infoUser,
+    infoTimestamp,
+    infoTestEnvironments,
+    testComment,
+    testStatus,
+    testAssociatedTest,
+  } = params;
+
+  const executionResultsDocument = {
+    info: {
+      project: infoProject,
+      summary: infoSummary,
+      description: infoDescription,
+      user: infoUser,
+      startDate: infoTimestamp,
+      finishDate: infoTimestamp,
+      testEnvironments: infoTestEnvironments,
+    },
+    tests: [
+      {
+        testKey: testAssociatedTest,
+        start: infoTimestamp,
+        finish: infoTimestamp,
+        comment: testComment,
+        status: testStatus,
+      },
+    ],
+  };
+
+  return xrayClient.importXrayJsonExecutionResults(executionResultsDocument);
+}
+
 module.exports = bootstrap({
   importExecutionResults: injectXrayClient(importXrayJsonExecutionResults),
   importCucumberJsonExecutionResults: injectXrayClient(importCucumberJsonExecutionResults),
   importJunitXmlExecutionResults: injectXrayClient(importJunitXmlExecutionResults),
+  createExecutionResult: injectXrayClient(createExecutionResult),
 });

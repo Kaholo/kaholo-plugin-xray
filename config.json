@@ -114,6 +114,103 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "createExecutionResult",
+      "viewName": "Create Execution Result",
+      "params": [
+        {
+          "name": "infoProject",
+          "viewName": "Jira Project ID",
+          "type": "string",
+          "required": true,
+          "description": "The project ID of the Jira project containing the Xray Test issue",
+          "placeholder": "APP"
+        },
+        {
+          "name": "infoSummary",
+          "viewName": "Execution Result Summary",
+          "type": "string",
+          "required": false,
+          "description": "A text summary of the test result",
+          "placeholder": "automated integration test result JP2032 - PASSED in 2m32s"
+        },
+        {
+          "name": "infoDescription",
+          "viewName": "Execution Result Description",
+          "type": "string",
+          "required": false,
+          "description": "A text description of the test result",
+          "placeholder": "automated integration test result JP2032"
+        },
+        {
+          "name": "infoTestEnvironments",
+          "viewName": "Test Environments",
+          "type": "text",
+          "parserType": "array",
+          "required": false,
+          "description": "A list of test enviornments as configured in Xray, one per line",
+          "placeholder": "chromium-headless/nfirefox103.0"
+        },
+        {
+          "name": "infoTimestamp",
+          "viewName": "Execution Timestamp",
+          "type": "string",
+          "required": true,
+          "description": "A time in ISO format representing both start and finish time of the test",
+          "placeholder": "2021-10-28T17:19:56Z"
+        },
+        {
+          "name": "infoUser",
+          "viewName": "Jira User",
+          "type": "string",
+          "required": false,
+          "description": "The name of the Jira user associated with this test result",
+          "placeholder": "automated integration test result JP2032"
+        },
+        {
+          "name": "testComment",
+          "viewName": "Test Result Comment",
+          "type": "string",
+          "required": false,
+          "description": "Text commentary regarding the test result",
+          "placeholder": "Automated test updated to accomodate changed made by APP-2388."
+        },
+        {
+          "name": "testStatus",
+          "viewName": "Test Result Status",
+          "type": "options",
+          "options": [
+            {
+              "id": "PASSED",
+              "name": "Passed"
+            },
+            {
+              "id": "FAILED",
+              "name": "Failed"
+            },
+            {
+              "id": "TODO",
+              "name": "To Do"
+            },
+            {
+              "id": "EXECUTING",
+              "name": "Executing"
+            }
+          ],
+          "required": true,
+          "default": "toDo",
+          "description": "The status of the test execution being created"
+        },
+        {
+          "name": "testAssociatedTest",
+          "viewName": "Associated Test",
+          "type": "string",
+          "required": true,
+          "description": "The Jira item number of the Test to which the Test Execution is related",
+          "placeholder": "APP-422"
+        }
+      ]
     }
   ]
 }
