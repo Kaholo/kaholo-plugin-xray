@@ -157,8 +157,8 @@
           "viewName": "Execution Timestamp",
           "type": "string",
           "required": true,
-          "description": "A time representing both start and finish time of the test.",
-          "placeholder": "2021-10-28 17:19:56 GMT"
+          "description": "A time in ISO format representing both start and finish time of the test",
+          "placeholder": "2021-10-28T17:19:56Z"
         },
         {
           "name": "infoUser",
