@@ -1,14 +1,14 @@
 {
   "name": "xray",
   "viewName": "Xray",
-  "description": "Kaholo Plugin for Xray Test Management App for Jira.",
+  "description": "Kaholo Plugin for Xray Test Management App for Jira",
   "version": "1.0.0",
   "type": "executer",
   "execProgram": "node",
   "main": "app.js",
   "imgUrl": "logo.png",
   "category": ["Testing"],
-  "keywords": ["xray", "jira", "test", "results", "precondition", "import", "execution", "atlassian"],
+  "keywords": ["xray", "jira", "test", "results", "precondition", "import", "execution", "atlassian", "cucumber", "junit", "nunit", "testng", "robot", "behave", "xunit"],
   "auth": {
     "authId": "xrayCredentials",
     "params": [
@@ -38,7 +38,7 @@
         {
           "name": "executionResultsDocument",
           "viewName": "Execution Results Document",
-          "description": "A JSON document containing the test results to import",
+          "description": "An Xray format JSON document containing the test results to import",
           "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
           "type": "text",
           "parserType": "object",
@@ -54,7 +54,7 @@
           "name": "executionResultsDocument",
           "viewName": "Execution Results Document",
           "description": "A JSON document containing the test results to import",
-          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
+          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2",
           "type": "text",
           "parserType": "object",
           "required": true
@@ -63,7 +63,7 @@
     },
     {
       "name": "importJunitXmlExecutionResults",
-      "viewName": "Import Junit XML Execution Results",
+      "viewName": "Import JUnit XML Execution Results",
       "params": [
         {
           "name": "projectKey",
@@ -109,7 +109,7 @@
           "name": "executionResultsDocument",
           "viewName": "Execution Results Document",
           "description": "An XML document containing the test results to import",
-          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2#ImportExecutionResultsRESTv2-XrayJSONresults",
+          "learnUrl": "https://docs.getxray.app/display/XRAYCLOUD/Import+Execution+Results+-+REST+v2",
           "type": "text",
           "required": true
         }
