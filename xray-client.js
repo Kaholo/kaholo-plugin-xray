@@ -67,7 +67,7 @@ class XrayClient {
 
     const junitXmlEndpoint = "/api/v2/import/execution/junit";
     const path = (
-      urlSearchParams.keys().length > 0
+      [...urlSearchParams.keys()].length > 0
         ? `${junitXmlEndpoint}?${urlSearchParams.toString()}`
         : junitXmlEndpoint
     );
