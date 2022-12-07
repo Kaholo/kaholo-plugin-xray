@@ -1,17 +1,22 @@
 const { bootstrap } = require("@kaholo/plugin-library");
 
-const { injectXrayClient } = require("./helpers");
+const {
+  injectXrayClient,
+  getResultsDocumentContent,
+} = require("./helpers");
 
 async function importXrayJsonExecutionResults(xrayClient, params) {
   const { executionResultsDocument } = params;
+  const resolvedResultsDocumentJson = await getResultsDocumentContent(executionResultsDocument);
 
-  return xrayClient.importXrayJsonExecutionResults(executionResultsDocument);
+  return xrayClient.importXrayJsonExecutionResults(resolvedResultsDocumentJson);
 }
 
 async function importCucumberJsonExecutionResults(xrayClient, params) {
   const { executionResultsDocument } = params;
+  const resolvedResultsDocumentJson = await getResultsDocumentContent(executionResultsDocument);
 
-  return xrayClient.importCucumberJsonExecutionResults(executionResultsDocument);
+  return xrayClient.importCucumberJsonExecutionResults(resolvedResultsDocumentJson);
 }
 
 async function importJunitXmlExecutionResults(xrayClient, params) {
@@ -24,9 +29,10 @@ async function importJunitXmlExecutionResults(xrayClient, params) {
     revision,
     fixVersion,
   } = params;
+  const resolvedResultsDocumentXml = await getResultsDocumentContent(executionResultsDocument);
 
   return xrayClient.importJunitXmlExecutionResults({
-    xml: executionResultsDocument,
+    xml: resolvedResultsDocumentXml,
     pathParameters: {
       projectKey,
       testExecKey,
